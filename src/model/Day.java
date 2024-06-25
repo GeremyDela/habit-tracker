@@ -141,10 +141,8 @@ public class Day implements Writable {
         } catch (NullPointerException e) {
         }
 
-        for (JTextField temp : dat) {
-            for (int x = 0; x < cusData.size(); x++) {
-                cusData.set(x, temp.getText());
-            }
+        for (int x = 0; x < dat.size(); x++) {
+            cusData.set(x, dat.get(x).getText());
         }
     }
 

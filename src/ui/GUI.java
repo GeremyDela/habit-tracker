@@ -47,9 +47,11 @@ public class GUI {
         setUpCalendar(panels.get(1));
         calendar(panels.get(2));
 
+        JScrollPane scrollPane = new JScrollPane(panels.get(2));
+
         mainPanel.add(panels.get(0), "main");
         mainPanel.add(panels.get(1), "setup");
-        mainPanel.add(panels.get(2), "calendar");
+        mainPanel.add(scrollPane, "calendar");
 
         panelCards.show(mainPanel, "main");
 

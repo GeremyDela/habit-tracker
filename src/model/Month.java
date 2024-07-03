@@ -6,6 +6,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Month implements Writable {
     private ArrayList<Day> days;
@@ -25,13 +26,20 @@ public class Month implements Writable {
     }
 
     public Month(String m, ArrayList<Day> d, ArrayList<String> g, ArrayList<String> b, ArrayList<String> c) {
-        month = m;
-        days = d;
-        goodBool = g;
-        badBool = b;
-        cusData = c;
-        ArrayList<String> today = parseTime();
-        td = Integer.parseInt(today.get(2));
+        if (!Objects.equals(m, getCurrMonth())) {
+            instantiateMonth();
+            setAllBoxes(g, b, c);
+            ArrayList<String> today = parseTime();
+            td = Integer.parseInt(today.get(2));
+        }  else {
+            month = m;
+            days = d;
+            goodBool = g;
+            badBool = b;
+            cusData = c;
+            ArrayList<String> today = parseTime();
+            td = Integer.parseInt(today.get(2));
+        }
     }
 
     public void enterDay(String entry, ArrayList<Boolean> gB, ArrayList<Boolean> bB, ArrayList<String> cD, int day) {
